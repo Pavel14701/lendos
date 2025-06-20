@@ -1,0 +1,40 @@
+[project]
+name = "lending"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "alembic>=1.16.2",
+    "argon2-cffi>=25.1.0",
+    "dishka>=1.6.0",
+    "fastapi>=0.115.12",
+    "faststream>=0.5.42",
+    "psycopg>=3.2.9",
+    "redis>=6.2.0",
+    "sqlalchemy>=2.0.41",
+]
+
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+exclude = ["migrations/*", "tests/*"]
+fix = true
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
+ignore = ["E203"]
+preview = true
+
+[tool.ruff.format]
+indent-style = "space"
+quote-style = "double"
+skip-magic-trailing-comma = false
+docstring-code-format = true
+docstring-code-line-length = 88
+
+[project.entry-points."alembic.commands"]
+diagram = "backend.src.infrastructure.migrations.scripts.build_schema_diagram:build"
+graph = "backend.src.infrastructure.migrations.scripts.render_migration_graph:build"
+verify = "backend.src.infrastructure.migrations.scripts.verify_migrations:run_check"
+doc = "backend.src.infrastructure.migrations.scripts.doc:run_all"

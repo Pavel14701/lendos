@@ -1,0 +1,13 @@
+repos:
+  - repo: local
+    hooks:
+      - id: er-diagram-auto-update
+        name: Update ER Diagram
+        entry: python backend/src/infrastructure/migrations/scripts/build_schema_diagram.py
+        language: system
+        files: ^backend/src/infrastructure/models\.py$
+      - id: verify-migrations
+        name: Check Pending Migrations
+        entry: python backend/src/infrastructure/migrations/scripts/verify_migrations.py
+        language: system
+        files: ^backend/src/infrastructure/models\.py$

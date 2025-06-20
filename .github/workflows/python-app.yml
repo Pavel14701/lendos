@@ -29,12 +29,10 @@ jobs:
         pip install .
     - name: Run linting with Ruff
       run: |
-        ruff check main_app --fix
-        ruff check account_events --fix
+        ruff check backend --fix
     - name: Run type-checking with MyPy
       run: |
-        mypy main_app/src/main.py
-        mypy account_events/src/main.py
+        mypy backend/src/main.py
     - name: Run tests with pytest
       run: |
         if ls tests/*.py 1> /dev/null 2>&1; then pytest; else echo "No tests found, skipping"; fi

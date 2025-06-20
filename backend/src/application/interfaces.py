@@ -8,7 +8,7 @@ from backend.src.domain.entities import (
     SignupPasswordDM,
     UserDm,
     UserPasswordDM,
-    UserSignupDM
+    UserSignupDM,
 )
 from backend.src.infrastructure._types import (
     ExceptionType,
@@ -17,7 +17,7 @@ from backend.src.infrastructure._types import (
     SessionID,
     SessionModel,
 )
-from backend.src.infrastructure._types import ExceptionType
+
 
 class ISession(Protocol):
     """Interface for session transaction management."""
@@ -77,7 +77,6 @@ class IErrorHandler(Protocol, Generic[ExceptionType]):
     ) -> ExceptionType:
         """Handles an error and raises an appropriate exception."""
         ...
-
 
 
 class ISessionBackend(Protocol, Generic[SessionID, SessionModel]):

@@ -7,7 +7,6 @@ from sqlalchemy.orm import (
     Mapped,
     mapped_column,
     object_mapper,
-    relationship,
 )
 
 from backend.src.infrastructure._types import DomainModel

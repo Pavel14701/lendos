@@ -45,8 +45,6 @@ SessionID = TypeVar("SessionID", bound=UUID, contravariant=True)
 GuestSessionID = TypeVar("GuestSessionID", bound=UUID, covariant=True)
 GuestSessionData = TypeVar("GuestSessionData", bound=DataclassProtocol)
 
-ExceptionType = TypeVar("ExceptionType", bound=DomainException)
-
 RequestResponseEndpoint = Callable[[Request], Awaitable[Response]]
 
 DomainModel = TypeVar("DomainModel", bound=DataclassProtocol)

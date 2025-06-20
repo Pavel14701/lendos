@@ -1,8 +1,7 @@
 import ast
 import subprocess
 from pathlib import Path
-from datetime import datetime
-from typing import Optional, Tuple, List, Dict
+from typing import Dict, List, Optional, Tuple
 
 VERSIONS: Path = Path(__file__).parents[1] / "versions"
 OUTPUT: Path = Path("backend/docs")

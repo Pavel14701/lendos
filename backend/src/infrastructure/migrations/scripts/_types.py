@@ -1,5 +1,6 @@
 from typing import TypedDict
 
+
 class ColumnSchema(TypedDict):
     name: str
     type: str

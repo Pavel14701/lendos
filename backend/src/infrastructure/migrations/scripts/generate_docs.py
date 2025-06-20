@@ -4,10 +4,14 @@ from typing import List
 
 from backend.src.infrastructure.migrations.scripts._types import TableSchema
 
-def generate_markdown_doc(filename: str, message: str, models: List[TableSchema]) -> None:
+
+def generate_markdown_doc(
+    filename: str, 
+    message: str, 
+    models: List[TableSchema]
+) -> None:
     docs: Path = Path("backend/docs")
     docs.mkdir(exist_ok=True, parents=True)
-    rev_id: str = filename.split("_")[0]
     content: List[str] = [
         f"# Migration: {filename}",
         f"**Created**: {datetime.now().isoformat()}",

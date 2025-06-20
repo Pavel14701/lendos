@@ -1,5 +1,9 @@
+from backend.src.infrastructure.migrations.scripts._types import (
+    ColumnSchema,
+    TableSchema,
+)
 from backend.src.infrastructure.models import Base
-from backend.src.infrastructure.migrations.scripts._types import TableSchema, ColumnSchema
+
 
 def get_model_definitions() -> list[TableSchema]:
     tables: list[TableSchema] = []

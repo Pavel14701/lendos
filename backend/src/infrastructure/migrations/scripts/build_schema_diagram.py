@@ -1,9 +1,8 @@
-import subprocess
 import os
-from pathlib import Path
+import subprocess
 from datetime import datetime
+from pathlib import Path
 from typing import Final
-
 
 OUTPUT: Final[Path] = Path("backend/docs")
 OUTPUT.mkdir(exist_ok=True, parents=True)

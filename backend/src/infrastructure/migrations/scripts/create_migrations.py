@@ -1,15 +1,17 @@
-import sys
 import subprocess
+import sys
 from datetime import datetime
 from pathlib import Path
 from typing import Final
 
-from backend.src.infrastructure.migrations.scripts._types import TableSchema
-from scripts.inspect_models import get_model_definitions
 from scripts.format_migration import render_upgrade_downgrade
 from scripts.generate_docs import generate_markdown_doc
+from scripts.inspect_models import get_model_definitions
+
+from backend.src.infrastructure.migrations.scripts._types import TableSchema
 
 MIGRATIONS_DIR: Final[Path] = Path(__file__).parents[1] / "versions"
+
 
 def create_revision(message: str) -> Path:
     rev_id: str = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -22,13 +24,14 @@ def create_revision(message: str) -> Path:
     ], check=True)
     return path
 
+
 def main() -> None:
     if len(sys.argv) < 2:
         print("❗ Usage: python scripts/create_migration.py \"Message for revision\"")
         return
     message: str = " ".join(sys.argv[1:])
     path: Path = create_revision(message)
-    models: list[TableSchema]  = get_model_definitions()
+    models: list[TableSchema] = get_model_definitions()
     upgrade: str
     downgrade: str
     upgrade, downgrade = render_upgrade_downgrade(models)
@@ -40,6 +43,7 @@ def main() -> None:
         f.write(contents)
         f.truncate()
     print(f"✅ Migration created and filled: {path.relative_to(Path.cwd())}")
+
 
 if __name__ == "__main__":
     main()

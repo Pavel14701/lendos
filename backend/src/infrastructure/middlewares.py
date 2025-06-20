@@ -1,15 +1,15 @@
 import contextlib
 from uuid import UUID
 
-from fastapi import FastAPI, Request, Response
+from fastapi import Request, Response
 from starlette.middleware.base import BaseHTTPMiddleware
 from starlette.types import ASGIApp
 
+from backend.src.infrastructure._types import RequestResponseEndpoint
 from backend.src.infrastructure.repositories.sessions import (
     GuestSessionBackend,
     RedisSessionBackend,
 )
-from backend.src.infrastructure._types import RequestResponseEndpoint
 
 
 class SessionMiddleware(BaseHTTPMiddleware):

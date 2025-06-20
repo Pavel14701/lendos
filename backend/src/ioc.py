@@ -1,4 +1,3 @@
-import base64
 from typing import AsyncIterable
 from uuid import uuid4
 
@@ -45,7 +44,6 @@ class AppProvider(Provider):
             yield conn
         finally:
             await conn.aclose()
-
 
     @provide(scope=Scope.APP)
     def get_secret_config(self, config: Config) -> SecretConfig:

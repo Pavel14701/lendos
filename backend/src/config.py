@@ -1,5 +1,6 @@
 from os import environ
-from typing import Type, TypeVar, Dict
+from typing import Dict, Type, TypeVar
+
 from pydantic import BaseModel, Field, field_validator
 
 env: Dict[str, str] = dict(environ)
@@ -48,7 +49,15 @@ class RedisConfig(BaseModel):
 
 
 class Config(BaseModel):
-    secret: SecretConfig = Field(default_factory=lambda: load_config(SecretConfig))
-    rabbitmq: RabbitMQConfig = Field(default_factory=lambda: load_config(RabbitMQConfig))
-    postgres: PostgresConfig = Field(default_factory=lambda: load_config(PostgresConfig))
-    redis: RedisConfig = Field(default_factory=lambda: load_config(RedisConfig))
+    secret: SecretConfig = Field(default_factory=lambda: load_config(
+        SecretConfig
+    ))
+    rabbitmq: RabbitMQConfig = Field(default_factory=lambda: load_config(
+        RabbitMQConfig
+    ))
+    postgres: PostgresConfig = Field(default_factory=lambda: load_config(
+        PostgresConfig
+    )) 
+    redis: RedisConfig = Field(default_factory=lambda: load_config(
+        RedisConfig
+    ))

@@ -3,11 +3,7 @@ from sqlalchemy.future import select
 
 from backend.src.application.exceptions import UserNotFoundException
 from backend.src.application.interfaces import IUser
-from backend.src.domain.entities import (
-    UserDm,
-    UserPasswordDM,
-    UserSignupDM
-)
+from backend.src.domain.entities import UserDm, UserPasswordDM, UserSignupDM
 from backend.src.infrastructure.models import User
 
 
@@ -43,7 +39,6 @@ class UserRepo(IUser):
         if user := result.scalars().first():
             return user.to_domain(UserDm)
         raise UserNotFoundException()
-
 
     async def signup(self, signup_dm: UserSignupDM) -> None:
         """Registers a new user in the system."""

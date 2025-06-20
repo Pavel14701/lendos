@@ -5,6 +5,7 @@ class DomainException(BaseException):
     """Base exception for domain-related errors."""
     pass
 
+
 @dataclass
 class UserNotFoundException(DomainException):
     """Exception raised when a user is not found."""

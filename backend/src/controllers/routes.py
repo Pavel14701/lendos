@@ -1,5 +1,3 @@
-from dataclasses import asdict
-from typing import Any
 
 from dishka.integrations.fastapi import FromDishka, inject
 from fastapi import APIRouter, HTTPException, Request
@@ -16,7 +14,6 @@ from backend.src.application.interactors import (
     SignupInteractor,
 )
 from backend.src.controllers.schemas import (
-    OkxWebSocketConfigRequest,
     UserLoginRequest,
     UserSignupRequest,
 )

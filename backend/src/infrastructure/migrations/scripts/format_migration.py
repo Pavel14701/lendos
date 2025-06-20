@@ -1,5 +1,6 @@
 from backend.src.infrastructure.migrations.scripts._types import TableSchema
 
+
 def render_upgrade_downgrade(models: list[TableSchema]) -> tuple[str, str]:
     upgrade: list[str] = []
     downgrade: list[str] = []

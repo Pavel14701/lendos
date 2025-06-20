@@ -7,7 +7,11 @@ def run_check() -> None:
     """Checks for unsaved migrations. Exits with code 1 if there are any."""
     print("🔍 Checking if there are any unsaved migrations...")
     result: CompletedProcess[str] = subprocess.run(
-        ["uv", "run", "alembic", "revision", "--autogenerate", "-m", "autocheck_tmp", "--rev-id", "check_draft"],
+        [
+            "uv", "run", "alembic", "revision", 
+            "--autogenerate", "-m", "autocheck_tmp", 
+            "--rev-id", "check_draft"
+        ],
         capture_output=True,
         text=True,
     )
